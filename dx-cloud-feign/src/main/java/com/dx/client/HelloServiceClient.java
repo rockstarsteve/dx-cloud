@@ -1,5 +1,6 @@
-package com.dx.server;
+package com.dx.client;
 
+import com.dx.server.HelloServiceFeignHystric;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @copyright Copyright (c) 文理电信
  * @since 2018-11-12
  */
-@FeignClient(value = "server")
-public interface HelloService {
+@FeignClient(value = "server",fallback = HelloServiceFeignHystric.class)
+public interface HelloServiceClient {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     String hello(@RequestParam(value = "name") String name);
