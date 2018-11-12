@@ -2,6 +2,7 @@ package com.dx;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
@@ -12,10 +13,11 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * 版权所有：Copyright 2018 by 文理电信
  */
 @EnableEurekaClient
+@EnableDiscoveryClient
 @SpringBootApplication
-public class ClientApplication {
+public class ServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ClientApplication.class, args);
+        SpringApplication.run(ServerApplication.class, args);
     }
 }
