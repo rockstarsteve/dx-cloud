@@ -15,6 +15,8 @@
         <module>dx-cloud-eurka-server</module>
         <module>dx-cloud-server</module>
         <module>dx-cloud-feign</module>
+        <module>dx-cloud-ribbon</module>
+        <module>dx-cloud-zuul</module>
     </modules>
 
     <parent>
