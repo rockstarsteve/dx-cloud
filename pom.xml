@@ -17,6 +17,8 @@
         <module>dx-cloud-feign</module>
         <module>dx-cloud-ribbon</module>
         <module>dx-cloud-zuul</module>
+        <module>dx-cloud-config</module>
+        <module>dx-cloud-config-client</module>
     </modules>
 
     <parent>
