@@ -1,5 +1,5 @@
 server:
-  port: 8771
+  port: 8772
 
 
 
@@ -7,13 +7,13 @@ server:
 spring:
   application:
     name: config-client
-
   cloud:
     bus:
       trace:
         enabled: true
       enabled: true
     config:
+      name: application  #文件前缀名称
       discovery:
         serviceId: config-server
         enabled: true

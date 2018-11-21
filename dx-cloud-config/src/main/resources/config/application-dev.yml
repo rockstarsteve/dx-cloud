@@ -1,17 +1,40 @@
+server:
+  port: 8771
+
 spring:
   application:
-    name: client-server
+    name: config-client
   cloud:
+    bus:
+      trace:
+        enabled: true
+      enabled: true
     config:
-      server:
-        git:
-          uri: https://github.com/forezp/SpringcloudConfig/
-          search-paths: respo
-          default-label: master
-          username:
-          password:
+      name: application  #文件前缀名称
+      discovery:
+        serviceId: config-server
+        enabled: true
+      profile: dev
+      label: master
+
+  rabbitmq:
+    password: guest
+    port: 5672
+    host: localhost
+    username: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
 
 
-server:
-  port: 8100
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+
 

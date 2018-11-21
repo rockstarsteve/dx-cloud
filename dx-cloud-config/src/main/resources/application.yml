@@ -5,15 +5,15 @@ spring:
   application:
     name: config-server
   profiles:
-    active: native  # 配置使用本地储存
+    #active: native  # 配置使用本地储存
   cloud:
     config:
       server:
         native:
           search-locations: classpath:/config/
         git:
-          uri: https://github.com/rockstarsteve/dx-config-data
-          #search-paths: /respo
+          uri: https://github.com/rockstarsteve/dx-cloud
+          search-paths: /dx-cloud-config/src/main/resources/config/
           default-label: master
           username:
           password:
