@@ -6,9 +6,9 @@ spring:
     name: config-client
   cloud:
     bus:
+      enabled: true
       trace:
         enabled: true
-      enabled: true
     config:
       name: application  #对应的配置服务中的应用名称
       discovery:

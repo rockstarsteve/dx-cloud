@@ -1,5 +1,5 @@
 server:
-  port: 8771
+  port: 8776
 
 spring:
   application:
@@ -18,10 +18,10 @@ spring:
       label: master
 
   rabbitmq:
-    password: guest
+    username: steve
+    password: steve
     port: 5672
     host: localhost
-    username: guest
 
 management:
   endpoints:
@@ -35,7 +35,7 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-dx: OK
+dx: yyyyyyy
 
 
 
