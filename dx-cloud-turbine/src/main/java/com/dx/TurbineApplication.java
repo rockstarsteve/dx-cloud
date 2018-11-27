@@ -7,7 +7,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.netflix.turbine.EnableTurbine;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Description:
@@ -19,14 +20,15 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @EnableEurekaClient
 @EnableDiscoveryClient
-@EnableFeignClients
+@RestController
 @EnableHystrix
 @EnableHystrixDashboard
 @EnableCircuitBreaker
+@EnableTurbine
 @SpringBootApplication
-public class FeignApplication {
+public class TurbineApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FeignApplication.class, args);
+        SpringApplication.run(TurbineApplication.class, args);
     }
 }

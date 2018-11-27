@@ -21,6 +21,7 @@
         <module>dx-cloud-config-client</module>
         <module>dx-cloud-zipkin</module>
         <module>dx-cloud-zipkin-server</module>
+        <module>dx-cloud-turbine</module>
     </modules>
 
     <parent>
