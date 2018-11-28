@@ -1,0 +1,27 @@
+server:
+  port: 8769
+
+spring:
+  application:
+    name: service-zuul
+  cloud:
+    gateway:
+      routes:
+      #б╥си /163  -->  http://www.163.com/
+      - id: 163_route
+        uri: http://www.163.com/
+        predicates:
+        - Path=/163
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
+

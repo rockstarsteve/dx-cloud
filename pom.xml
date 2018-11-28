@@ -16,7 +16,7 @@
         <module>dx-cloud-server</module>
         <module>dx-cloud-feign</module>
         <module>dx-cloud-ribbon</module>
-        <module>dx-cloud-zuul</module>
+        <module>dx-cloud-gateway</module>
         <module>dx-cloud-config</module>
         <module>dx-cloud-config-client</module>
         <module>dx-cloud-zipkin</module>
