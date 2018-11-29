@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.concurrent.Callable;
+
 /**
  * Description:
  *
@@ -23,6 +26,11 @@ public class HelloController {
     @GetMapping(value = "/hello")
     public String sayHi(@RequestParam String name) {
         return helloServiceClient.hello(name);
+    }
+
+    @GetMapping(value = "/async")
+    public Callable<List<String>> async() {
+        return helloServiceClient.async();
     }
 
 }

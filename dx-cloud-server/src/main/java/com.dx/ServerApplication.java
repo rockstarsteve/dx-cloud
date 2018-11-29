@@ -10,6 +10,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * dx-cloud
@@ -23,6 +24,7 @@ import org.springframework.context.annotation.Bean;
 @EnableCircuitBreaker
 @EnableEurekaClient
 @EnableDiscoveryClient
+@EnableAsync
 @SpringBootApplication
 public class ServerApplication {
 
