@@ -22,6 +22,7 @@
         <module>dx-cloud-zipkin</module>
         <module>dx-cloud-zipkin-server</module>
         <module>dx-cloud-turbine</module>
+        <module>dx-cloud-auth</module>
     </modules>
 
     <parent>
@@ -71,6 +72,14 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <!--公共依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
