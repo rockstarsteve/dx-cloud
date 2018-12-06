@@ -1,28 +1,65 @@
 server:
-  port: 8769
+  port: 8000
 
 spring:
   application:
-    name: service-gateway
+    name: geteway
+
+  redis:
+    host: localhost
+    port: 6379
+    password:
+
   cloud:
     gateway:
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "docs.spring.io"
-            allowedMethods:
-            - GET
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      default-filters:
+      - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+      - name: RequestRateLimiter
+        args:
+          redis-rate-limiter.replenishRate: 1  #令牌桶的容积
+          redis-rate-limiter.burstCapacity: 1  #流速 每秒
+          rate-limiter: "#{@defaultRedisRateLimiter}"  #SPEL表达式去的对应的bean
+          key-resolver: "#{@remoteAddressKeyResolver}" #SPEL表达式去的对应的bean
       routes:
-      # to 136  http://www.163.com/
-      - id: 163_route
-        uri: http://www.163.com/
+      # =====================================
+      - id: authorization-server
+        uri: lb://authorization-server
         predicates:
-        - Path=/163
-      # to auth
-      - id: auth_route
-        uri: lb://server
-        predicates:
-        - Path=/auth/**
+        - Path=/authorization-server/**
+        filters:
+        - PrefixPath=/test-server
+        - StripPrefix=2
+        - AddResponseHeader=foo, bar
+        - name: Retry
+          args:
+            retries: 3
+            statuses: BAD_GATEWAY
+
+
+  #jwt密码
+  security:
+    oauth2:
+      jwt:
+        signingKey: 123456
+
+
+
+
+#网关白名单，无需要签权url
+gate:
+  ignore:
+    authentication:
+      startWith: /oauth,/open
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 eureka:
   client:
@@ -31,8 +68,9 @@ eureka:
 
 logging:
   level:
-    org.springframework.cloud.gateway: TRACE
-    org.springframework.http.server.reactive: DEBUG
-    org.springframework.web.reactive: DEBUG
-    reactor.ipc.netty: DEBUG
+    com.springboot.cloud.gateway: debug
+    com.jalja.org.spring: debug
+  path: logs/
+  file:
+    max-size: 1GB
 

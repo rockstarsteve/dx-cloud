@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * Description:
+ *
  * @author yaoj
  * @version 1.0
- * @copyright 广州明动软件有限公司 Copyright (c) 2018
- * @since 2018-12-6
+ * @copyright Copyright (c) 文理电信
+ * @since 2018-12-06
  */
 @RestController
 @Slf4j

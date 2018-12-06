@@ -1,20 +1,23 @@
 server:
-  port: 8762
+  port: 8771
 
 spring:
   application:
     name: authentication-server
 
   security:
-      oauth2:
-        jwt:
-          signingKey: 123456
+    oauth2:
+      jwt:
+        signingKey: 123456
+
+
 
   datasource:
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/spring_cloud?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true
-      username: root
-      password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dx_cloud?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true
+    username: root
+    password: root
+
 
 
 mybatis:

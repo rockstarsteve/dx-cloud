@@ -12,10 +12,12 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 /**
+ * Description:
+ *
  * @author yaoj
  * @version 1.0
- * @copyright 广州明动软件有限公司 Copyright (c) 2018
- * @since 2018-12-6
+ * @copyright Copyright (c) 文理电信
+ * @since 2018-12-06
  */
 @Configuration
 @EnableResourceServer

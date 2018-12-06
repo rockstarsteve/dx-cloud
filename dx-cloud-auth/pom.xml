@@ -17,6 +17,7 @@
     <modules>
         <module>dx-cloud-auth-authentication</module>
         <module>dx-cloud-auth-authorization</module>
+        <module>dx-cloud-auth-authentication-client</module>
     </modules>
 
     <dependencies>
@@ -30,6 +31,16 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.9</version>
+        </dependency>
+        <!--Redis缓存-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
     </dependencies>
 
