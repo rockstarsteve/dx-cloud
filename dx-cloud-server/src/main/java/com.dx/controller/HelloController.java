@@ -60,4 +60,9 @@ public class HelloController {
         };
     }
 
+    @RequestMapping("/auth/get")
+    public String auth() {
+        return "auth   ok  le";
+    }
+
 }
