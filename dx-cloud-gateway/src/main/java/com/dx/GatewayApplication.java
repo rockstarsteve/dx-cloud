@@ -26,10 +26,22 @@ public class GatewayApplication {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                //basic proxy
                 .route(r -> r.path("/baidu")
                         .uri("http://baidu.com:80/")
-                ).build();
+                )
+
+                .route(r -> r.path("/userapi3/**")
+                        .filters(f -> f.addResponseHeader("X-AnotherHeader", "testapi3"))
+
+                        .uri("lb://user-service/")
+                )
+
+                .route("163_route",
+                        r -> r.remoteAddr("10.1.1.1", "10.10.1.1/24")
+                                .uri("http://baidu.com:80/")
+                )
+
+                .build();
     }
 
 }
