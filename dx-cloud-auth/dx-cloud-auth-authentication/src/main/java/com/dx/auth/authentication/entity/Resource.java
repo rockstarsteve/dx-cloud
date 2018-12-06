@@ -1,5 +1,6 @@
 package com.dx.auth.authentication.entity;
 
+import com.dx.common.core.entity.po.BasePo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

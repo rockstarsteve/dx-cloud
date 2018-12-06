@@ -1,5 +1,8 @@
 package com.dx.auth.authentication.rest;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+
 /**
  * @author yaoj
  * @version 1.0

@@ -1,6 +1,9 @@
 package com.dx.auth.authentication.server;
 
+import com.dx.auth.authentication.entity.Resource;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 /**
  * @author yaoj

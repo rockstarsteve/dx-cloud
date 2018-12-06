@@ -1,5 +1,23 @@
 package com.dx.auth.authentication.server.impl;
 
+import com.dx.auth.authentication.entity.Resource;
+import com.dx.auth.authentication.server.IAuthenticationService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.SecurityConfig;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  * @author yaoj
  * @version 1.0
@@ -44,8 +62,9 @@ public class AuthenticationService implements IAuthenticationService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         //获取此url，method访问对应的权限资源信息
         ConfigAttribute urlConfigAttribute = findConfigAttributesByUrl(authRequest);
-        if (NONEXISTENT_URL.equals(urlConfigAttribute.getAttribute()))
+        if (NONEXISTENT_URL.equals(urlConfigAttribute.getAttribute())) {
             log.debug("url未在资源池中找到，拒绝访问");
+        }
         //获取此访问用户所有角色拥有的权限资源
         Set<Resource> userResources = findResourcesByAuthorityRoles(authentication.getAuthorities());
         //用户拥有权限资源 与 url要求的资源进行对比

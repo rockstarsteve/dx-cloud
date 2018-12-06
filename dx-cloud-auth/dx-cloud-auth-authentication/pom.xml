@@ -14,12 +14,17 @@
 
     <parent>
         <groupId>com.dx</groupId>
-        <artifactId>dx-cloud</artifactId>
+        <artifactId>dx-cloud-auth</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
 
     <dependencies>
+        <dependency>
+            <groupId>com.dx</groupId>
+            <artifactId>dx-cloud-comm-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -37,6 +42,11 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!--oauth2认证-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-security</artifactId>
         </dependency>
     </dependencies>
 

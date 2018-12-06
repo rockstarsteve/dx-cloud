@@ -2,6 +2,8 @@ package com.dx.auth.authentication.server;
 
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author yaoj
  * @version 1.0
