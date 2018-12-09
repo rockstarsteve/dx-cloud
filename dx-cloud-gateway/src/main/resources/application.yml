@@ -26,12 +26,12 @@ spring:
           key-resolver: "#{@remoteAddressKeyResolver}" #SPEL表达式去的对应的bean
       routes:
       # =====================================
-      - id: authentication-server
-        uri: lb://authentication-server
+      - id: authorization-server
+        uri: lb://authorization-server
         predicates:
         - Path=/authorization-server/**
         filters:
-        - PrefixPath=/test-server
+        - PrefixPath=/server
         - StripPrefix=2
         - AddResponseHeader=foo, bar
         - name: Retry

@@ -16,7 +16,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @EnableEurekaClient
 @EnableCircuitBreaker
-@EnableFeignClients//(basePackages = "com.dx.auth.client")//(basePackages = "com.dx.auth.client")
+@EnableFeignClients(basePackages = "com.dx.auth.client")//(basePackages = "com.dx.auth.client")
 @SpringBootApplication
 public class GatewayApplication {
 
