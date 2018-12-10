@@ -12,7 +12,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 /**
- * Description:
+ * Description: 系统安全配置： OAuth2ServerConfig 配置
  *
  * @author yaoj
  * @version 1.0
@@ -35,7 +35,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests()
+                .anyRequest()
+                .authenticated();//在其他地方配置需要访问控制的地址，必须认证过后才可以访问
     }
 
     @Bean
