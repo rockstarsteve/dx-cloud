@@ -41,22 +41,30 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
     @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
-    @Qualifier("dataSource")
     @Autowired
+    @Qualifier("dataSource")
     DataSource dataSource;
 
     @Autowired
     @Qualifier("userDetailsService")
     UserDetailsService userDetailsService;
+
     /**
      * jwt 对称加密密钥
      */
     @Value("${spring.security.oauth2.jwt.signingKey}")
     private String signingKey;
 
+    /**
+     * 授权端点开放
+     * @param oauthServer
+     */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
-        oauthServer.tokenKeyAccess("isAuthenticated()")
+        oauthServer
+                // 开启/oauth/token_key验证端口无权限访问
+                .tokenKeyAccess("isAuthenticated()")
+                // 开启/oauth/check_token验证端口认证权限访问
                 .checkTokenAccess("permitAll()");
     }
 

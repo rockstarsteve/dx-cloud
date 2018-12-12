@@ -23,12 +23,17 @@ public class WebServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http.authorizeRequests()
-                .anyRequest().authenticated();
+        http
+                // 由于使用的是JWT，我们这里不需要csrf
+                .csrf().disable();
+
+        http
+                // 其余所有请求全部需要鉴权认证
+                .authorizeRequests().anyRequest().authenticated();
     }
 
     /**
+     * 用户验证
      * 注入自定义的userDetailsService实现，获取用户信息，设置密码加密方式
      *
      * @param authenticationManagerBuilder

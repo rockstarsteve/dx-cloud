@@ -25,6 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
 
+        // 调用(需要扩展FeignClient)查询用户
         User user = userService.getByUsername(username);
         log.info("loadByUsername:{}", user.toString());
 
@@ -35,11 +36,12 @@ public class CustomUserDetailsService implements UserDetailsService {
                 user.getAccountNonExpired(),
                 user.getCredentialsNonExpired(),
                 user.getAccountNonLocked(),
+                //获得登录者所有角色的权限集合
                 this.obtainGrantedAuthorities(user));
     }
 
     /**
-     * 获得登录者所有角色的权限集合.
+     * 获得登录者所有角色的权限集合
      *
      * @param user
      * @return
