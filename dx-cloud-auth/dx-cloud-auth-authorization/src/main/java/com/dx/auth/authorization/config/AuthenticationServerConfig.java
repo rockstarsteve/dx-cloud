@@ -74,13 +74,27 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
         clients.jdbc(dataSource);
     }
 
+    /**
+     * 配置token的数据源、自定义的tokenServices等信息,配置身份认证器，配置认证方式，TokenStore，TokenGranter，OAuth2RequestFactory
+     * @param endpoints
+     */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        //配置token的数据源、自定义的tokenServices等信息,配置身份认证器，配置认证方式，TokenStore，TokenGranter，OAuth2RequestFactory
-        endpoints.tokenStore(tokenStore())
+        //
+        endpoints
+                //token的持久化
+                .tokenStore(tokenStore())
+                //自定义token
                 .tokenEnhancer(tokenEnhancerChain())
+                //AuthenticationManager
                 .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService);
+                //CustomUserDetailsService  用来做用户的查询服务操作的
+                .userDetailsService(userDetailsService)
+
+                // 配置JwtAccessToken转换器
+//                .accessTokenConverter(jwtAccessTokenConverter())
+
+        ;
     }
 
     @Bean
@@ -132,4 +146,21 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
         converter.setSigningKey(signingKey);
         return converter;
     }
+
+
+//    /**
+//     * 使用非对称加密算法来对Token进行签名
+//     * @return
+//     */
+//    @Bean
+//    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+//
+//        final JwtAccessTokenConverter converter = new JwtAccessToken();
+//        // 导入证书
+//        KeyStoreKeyFactory keyStoreKeyFactory =
+//                new KeyStoreKeyFactory(new ClassPathResource("keystore.jks"), "mypass".toCharArray());
+//        converter.setKeyPair(keyStoreKeyFactory.getKeyPair("mytest"));
+//
+//        return converter;
+//    }
 }
